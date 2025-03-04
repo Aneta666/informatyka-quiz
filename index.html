@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz z informatyki - Szko³a Podstawowa</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        #result { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Quiz z informatyki dla szko³y podstawowej</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. Co to jest klawiatura?</p>
+            <input type="radio" name="q1" value="a"> a) Urz¹dzenie do wyœwietlania obrazu<br>
+            <input type="radio" name="q1" value="b"> b) Urz¹dzenie do wprowadzania danych<br>
+            <input type="radio" name="q1" value="c"> c) Czêœæ procesora<br>
+        </div>
+        <div class="question">
+            <p>2. Jak nazywa siê program do rysowania?</p>
+            <input type="radio" name="q2" value="a"> a) Word<br>
+            <input type="radio" name="q2" value="b"> b) Paint<br>
+            <input type="radio" name="q2" value="c"> c) Excel<br>
+        </div>
+        <div class="question">
+            <p>3. Co oznacza skrót CPU?</p>
+            <input type="radio" name="q3" value="a"> a) Central Processing Unit<br>
+            <input type="radio" name="q3" value="b"> b) Computer Power Unit<br>
+            <input type="radio" name="q3" value="c"> c) Control Printer Unit<br>
+        </div>
+        <div class="question">
+            <p>4. Co to jest Internet?</p>
+            <input type="radio" name="q4" value="a"> a) Gra komputerowa<br>
+            <input type="radio" name="q4" value="b"> b) Sieæ ³¹cz¹ca komputery na ca³ym œwiecie<br>
+            <input type="radio" name="q4" value="c"> c) Program do pisania tekstów<br>
+        </div>
+        <div class="question">
+            <p>5. Jak nazywa siê pamiêæ, która przechowuje dane tymczasowo?</p>
+            <input type="radio" name="q5" value="a"> a) ROM<br>
+            <input type="radio" name="q5" value="b"> b) RAM<br>
+            <input type="radio" name="q5" value="c"> c) HDD<br>
+        </div>
+        <div class="question">
+            <p>6. Co to jest myszka komputerowa?</p>
+            <input type="radio" name="q6" value="a"> a) Urz¹dzenie wskazuj¹ce<br>
+            <input type="radio" name="q6" value="b"> b) Klawiatura<br>
+            <input type="radio" name="q6" value="c"> c) Monitor<br>
+        </div>
+        <div class="question">
+            <p>7. Jakiego programu u¿ywamy do pisania tekstów?</p>
+            <input type="radio" name="q7" value="a"> a) Paint<br>
+            <input type="radio" name="q7" value="b"> b) Word<br>
+            <input type="radio" name="q7" value="c"> c) Kalkulator<br>
+        </div>
+        <div class="question">
+            <p>8. Co to jest system operacyjny?</p>
+            <input type="radio" name="q8" value="a"> a) Program zarz¹dzaj¹cy komputerem<br>
+            <input type="radio" name="q8" value="b"> b) Gra komputerowa<br>
+            <input type="radio" name="q8" value="c"> c) Kabel sieciowy<br>
+        </div>
+        <div class="question">
+            <p>9. Jak nazywa siê noœnik danych na USB?</p>
+            <input type="radio" name="q9" value="a"> a) Pendrive<br>
+            <input type="radio" name="q9" value="b"> b) Monitor<br>
+            <input type="radio" name="q9" value="c"> c) Klawiatura<br>
+        </div>
+        <div class="question">
+            <p>10. Co oznacza skrót WWW?</p>
+            <input type="radio" name="q10" value="a"> a) World Wide Web<br>
+            <input type="radio" name="q10" value="b"> b) Windows Web Work<br>
+            <input type="radio" name="q10" value="c"> c) Web Wide World<br>
+        </div>
+        <button type="button" onclick="checkAnswers()">SprawdŸ wyniki</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: "b", q2: "b", q3: "a", q4: "b", q5: "b",
+                q6: "a", q7: "b", q8: "a", q9: "a", q10: "a"
+            };
+            let score = 0;
+            const form = document.getElementById("quizForm");
+            const result = document.getElementById("result");
+
+            for (let i = 1; i <= 10; i++) {
+                const answer = form.querySelector(`input[name="q${i}"]:checked`);
+                if (answer && answer.value === correctAnswers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            result.innerHTML = `Twój wynik: ${score}/10`;
+            if (score === 10) {
+                result.innerHTML += " - Œwietnie! Jesteœ mistrzem informatyki!";
+            } else if (score >= 7) {
+                result.innerHTML += " - Bardzo dobrze!";
+            } else if (score >= 4) {
+                result.innerHTML += " - NieŸle, ale warto powtórzyæ!";
+            } else {
+                result.innerHTML += " - Warto siê jeszcze pouczyæ!";
+            }
+        }
+    </script>
+</body>
+</html>
