@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz z informatyki - Szkoła Podstawowa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f4f8; /* Jasnoniebieskie tło */
+            color: #333; /* Ciemnoszary tekst */
+        }
+        h1 {
+            color: #2c3e50; /* Granatowy nagłówek */
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff; /* Białe tło pytań */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lekki cień */
+        }
+        .question p {
+            color: #2980b9; /* Niebieski tekst pytań */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="radio"] {
+            accent-color: #e74c3c; /* Czerwony kolor znaczników radiowych */
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #27ae60; /* Zielony przycisk */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #219653; /* Ciemniejszy zielony po najechaniu */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* Kolory wyniku w zależności od punktacji */
+        #result.good {
+            background-color: #dff0d8; /* Jasnozielone tło dla dobrego wyniku */
+            color: #3c763d;
+        }
+        #result.average {
+            background-color: #fcf8e3; /* Żółte tło dla średniego wyniku */
+            color: #8a6d3b;
+        }
+        #result.bad {
+            background-color: #f2dede; /* Czerwone tło dla słabego wyniku */
+            color: #a94442;
+        }
+        /* Podświetlenie odpowiedzi */
+        .correct {
+            background-color: #dff0d8; /* Zielone tło dla poprawnych */
+            color: #3c763d;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .incorrect {
+            background-color: #f2dede; /* Czerwone tło dla błędnych */
+            color: #a94442;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz z informatyki dla szkoły podstawowej</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. Co to jest klawiatura?</p>
+            <label><input type="radio" name="q1" value="a"> a) Urządzenie do wyświetlania obrazu</label>
+            <label><input type="radio" name="q1" value="b"> b) Urządzenie do wprowadzania danych</label>
+            <label><input type="radio" name="q1" value="c"> c) Część procesora</label>
+        </div>
+        <div class="question">
+            <p>2. Jak nazywa się program do rysowania?</p>
+            <label><input type="radio" name="q2" value="a"> a) Word</label>
+            <label><input type="radio" name="q2" value="b"> b) Paint</label>
+            <label><input type="radio" name="q2" value="c"> c) Excel</label>
+        </div>
+        <div class="question">
+            <p>3. Co oznacza skrót CPU?</p>
+            <label><input type="radio" name="q3" value="a"> a) Central Processing Unit</label>
+            <label><input type="radio" name="q3" value="b"> b) Computer Power Unit</label>
+            <label><input type="radio" name="q3" value="c"> c) Control Printer Unit</label>
+        </div>
+        <div class="question">
+            <p>4. Co to jest Internet?</p>
+            <label><input type="radio" name="q4" value="a"> a) Gra komputerowa</label>
+            <label><input type="radio" name="q4" value="b"> b) Sieć łącząca komputery na całym świecie</label>
+            <label><input type="radio" name="q4" value="c"> c) Program do pisania tekstów</label>
+        </div>
+        <div class="question">
+            <p>5. Jak nazywa się pamięć, która przechowuje dane tymczasowo?</p>
+            <label><input type="radio" name="q5" value="a"> a) ROM</label>
+            <label><input type="radio" name="q5" value="b"> b) RAM</label>
+            <label><input type="radio" name="q5" value="c"> c) HDD</label>
+        </div>
+        <div class="question">
+            <p>6. Co to jest myszka komputerowa?</p>
+            <label><input type="radio" name="q6" value="a"> a) Urządzenie wskazujące</label>
+            <label><input type="radio" name="q6" value="b"> b) Klawiatura</label>
+            <label><input type="radio" name="q6" value="c"> c) Monitor</label>
+        </div>
+        <div class="question">
+            <p>7. Jakiego programu używamy do pisania tekstów?</p>
+            <label><input type="radio" name="q7" value="a"> a) Paint</label>
+            <label><input type="radio" name="q7" value="b"> b) Word</label>
+            <label><input type="radio" name="q7" value="c"> c) Kalkulator</label>
+        </div>
+        <div class="question">
+            <p>8. Co to jest system operacyjny?</p>
+            <label><input type="radio" name="q8" value="a"> a) Program zarządzający komputerem</label>
+            <label><input type="radio" name="q8" value="b"> b) Gra komputerowa</label>
+            <label><input type="radio" name="q8" value="c"> c) Kabel sieciowy</label>
+        </div>
+        <div class="question">
+            <p>9. Jak nazywa się nośnik danych na USB?</p>
+            <label><input type="radio" name="q9" value="a"> a) Pendrive</label>
+            <label><input type="radio" name="q9" value="b"> b) Monitor</label>
+            <label><input type="radio" name="q9" value="c"> c) Klawiatura</label>
+        </div>
+        <div class="question">
+            <p>10. Co oznacza skrót WWW?</p>
+            <label><input type="radio" name="q10" value="a"> a) World Wide Web</label>
+            <label><input type="radio" name="q10" value="b"> b) Windows Web Work</label>
+            <label><input type="radio" name="q10" value="c"> c) Web Wide World</label>
+        </div>
+        <button type="button" onclick="checkAnswers()">Sprawdź wyniki</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: "b", q2: "b", q3: "a", q4: "b", q5: "b",
+                q6: "a", q7: "b", q8: "a", q9: "a", q10: "a"
+            };
+            let score = 0;
+            const form = document.getElementById("quizForm");
+            const result = document.getElementById("result");
+
+            // Resetowanie klas
+            result.className = "";
+            const labels = form.getElementsByTagName("label");
+            for (let label of labels) {
+                label.classList.remove("correct", "incorrect");
+            }
+
+            // Sprawdzanie odpowiedzi i podświetlenie
+            for (let i = 1; i <= 10; i++) {
+                const selectedAnswer = form.querySelector(`input[name="q${i}"]:checked`);
+                const correctValue = correctAnswers[`q${i}`];
+                const correctLabel = form.querySelector(`input[name="q${i}"][value="${correctValue}"]`).parentElement;
+
+                // Podświetlenie poprawnej odpowiedzi
+                correctLabel.classList.add("correct");
+
+                // Jeśli wybrano odpowiedź
+                if (selectedAnswer) {
+                    const selectedLabel = selectedAnswer.parentElement;
+                    if (selectedAnswer.value === correctValue) {
+                        score++;
+                    } else {
+                        selectedLabel.classList.add("incorrect");
+                    }
+                }
+            }
+
+            // Wyświetlanie wyniku
+            result.innerHTML = `Twój wynik: ${score}/10`;
+            if (score === 10) {
+                result.innerHTML += " - Świetnie! Jesteś mistrzem informatyki!";
+                result.classList.add("good");
+            } else if (score >= 7) {
+                result.innerHTML += " - Bardzo dobrze!";
+                result.classList.add("good");
+            } else if (score >= 4) {
+                result.innerHTML += " - Nieźle, ale warto powtórzyć!";
+                result.classList.add("average");
+            } else {
+                result.innerHTML += " - Warto się jeszcze pouczyć!";
+                result.classList.add("bad");
+            }
+        }
+    </script>
+</body>
+</html>
